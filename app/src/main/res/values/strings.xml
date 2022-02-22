@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ApiAndroid</string>
+
+    <string name="welcomeSignUp1">Hello there!</string>
+    <string name="welcomeSignUp2">Sign up to start</string>
+
+    <string name="welcomeLogin1">Welcome back!</string>
+    <string name="welcomeLogin2">Log in to start</string>
+
+    <string name="namePalabra">Name</string>
+    <string name="emailPalabra">Email</string>
+    <string name="passPalabra">Password</string>
+    <string name="phonePalabra">Phone</string>
+
+    <string name="namePalabra2">Name:</string>
+    <string name="emailPalabra2">Email:</string>
+    <string name="passPalabra2">Password:</string>
+    <string name="phonePalabra2">Phone:</string>
+
+    <string name="SignUpPalabra">Sign up</string>
+    <string name="LoginPalabra">Login</string>
+    <string name="AnimesPalabra">Animes</string>
+    <string name="FavPalabra">Favorites</string>
+    <string name="DetailsPalabra">Details</string>
+    <string name="UpdatePalabra">Update</string>
+    <string name="DeletePalabra">Delete</string>
+</resources>

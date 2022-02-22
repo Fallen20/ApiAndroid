@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/amarillo"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/caratulaAnime"
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/caratulaAnime">
+
+        <TextView
+            android:id="@+id/nameAnime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Titulo placeholder"
+            android:textColor="@color/rojo"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descAnime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameAnime"
+            android:layout_marginBottom="7dp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:textColor="@color/letraOsc" />
+
+        <TextView
+            android:id="@+id/yearAnime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descAnime"
+            android:layout_marginBottom="7dp"
+            android:text="2022"
+            android:textColor="@color/rojo" />
+
+        <TextView
+            android:id="@+id/platformAnime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yearAnime"
+            android:layout_marginBottom="7dp"
+            android:text="TV"
+            android:textColor="@color/letraOsc"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/favIconAnime"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/platformAnime"
+            app:srcCompat="@drawable/heart_icon" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
