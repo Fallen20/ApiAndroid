@@ -117,6 +117,7 @@ public class ListActivity extends AppCompatActivity {
 
                                 AnimeJson anime=new AnimeJson();
 
+                                anime.setId(obj.getString("id"));
                                 anime.setName(obj.getString("name"));
                                 anime.setDescripcion(obj.getString("description"));
                                 anime.setType(obj.getString("type"));

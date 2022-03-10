@@ -1,12 +1,14 @@
 package com.example.apiAndroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -90,6 +93,27 @@ public class RecyclerAnime extends RecyclerView.Adapter<RecyclerAnime.MyViewHold
                     //Toast.makeText(context.getApplicationContext(), "add", Toast.LENGTH_SHORT).show();
                     holder.favIcon.setImageResource(R.drawable.full_heart_icon_rojo);
                 }
+            }
+        });
+
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context.getApplicationContext(), DetailsActivity.class);
+
+                //serializable no funciona, uno a uno
+                intent.putExtra("idUserADetails",usuario.getId());
+                intent.putExtra("nombreADetails",animeList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("descADetails",animeList.get(holder.getAdapterPosition()).getDescripcion());
+                intent.putExtra("yearADetails",animeList.get(holder.getAdapterPosition()).getYear());
+                intent.putExtra("platfADetails",animeList.get(holder.getAdapterPosition()).getType());
+                intent.putExtra("inFavADetails",animeList.get(holder.getAdapterPosition()).getFavs());
+                intent.putExtra("idAnimeADetails",animeList.get(holder.getAdapterPosition()).getId());
+                intent.putExtra("UrlADetails",Direcciones.IP+animeList.get(holder.getAdapterPosition()).getImagenUrl());
+                intent.putExtra("emailADetails",usuario.getEmail());
+
+                context.startActivity(intent);
             }
         });
     }
@@ -176,6 +200,7 @@ public class RecyclerAnime extends RecyclerView.Adapter<RecyclerAnime.MyViewHold
         private TextView year;
         private TextView airedOn;
         private ImageView favIcon;
+        private RelativeLayout layout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -186,6 +211,7 @@ public class RecyclerAnime extends RecyclerView.Adapter<RecyclerAnime.MyViewHold
             year=itemView.findViewById(R.id.yearAnime);
             airedOn=itemView.findViewById(R.id.platformAnime);
             favIcon=itemView.findViewById(R.id.favIconAnime);
+            layout=itemView.findViewById(R.id.relativeRow);
         }
     }
 }

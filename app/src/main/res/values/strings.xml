@@ -24,4 +24,6 @@
     <string name="DetailsPalabra">Details</string>
     <string name="UpdatePalabra">Update</string>
     <string name="DeletePalabra">Delete</string>
+
+    <string name="episodesPalabra">Episodes:</string>
 </resources>
