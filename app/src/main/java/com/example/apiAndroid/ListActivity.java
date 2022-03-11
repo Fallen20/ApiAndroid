@@ -187,7 +187,7 @@ public class ListActivity extends AppCompatActivity {
         intent.putExtra("usuarioPhone2", phoneUser);
 
 
-//        finish();
+        finish();
         startActivity(intent);
     }
 }

@@ -105,8 +105,6 @@ public class FavsActivity extends AppCompatActivity {
 
                                 animeList.add(anime);
                             }
-                            System.out.println("dentro");
-                            System.out.println("size " + animeList.size());
                             if (animeList.size() != 0) {//sino esta vacia
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                 adapter = new RecyclerAnime(FavsActivity.this, animeList, usuario);

@@ -98,24 +98,24 @@ public class DetailsActivity extends AppCompatActivity {
 
         Drawable.ConstantState constantState2;
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            constantState2=getApplicationContext().getResources().getDrawable(R.drawable.heart_icon, getApplicationContext().getTheme()).getConstantState();
+            constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.heart_icon, getApplicationContext().getTheme()).getConstantState();
         }
-        else{constantState2=getApplicationContext().getResources().getDrawable(R.drawable.heart_icon).getConstantState();}
+        else{constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.heart_icon).getConstantState();}
 
-//        System.out.println("lleno? pre");
-//        System.out.println("img"+fav.getDrawable().getConstantState());
-//        System.out.println("constant"+constantState2);
-//        System.out.println(fav.getDrawable().getConstantState()==constantState2);
+        System.out.println("lleno? pre");
+        System.out.println("img"+fav.getDrawable().getConstantState());
+        System.out.println("constant"+constantState2);
+        System.out.println(fav.getDrawable().getConstantState()==constantState2);
 
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //
-//                System.out.println("lleno? click");
-//                System.out.println("img"+fav.getDrawable().getConstantState());
-//                System.out.println("constant"+constantState2);
-//                System.out.println(fav.getDrawable().getConstantState()==constantState2);//mira si es la misma imagen
+                System.out.println("lleno? click");
+                System.out.println("img"+fav.getDrawable().getConstantState());
+                System.out.println("constant"+constantState2);
+                System.out.println(fav.getDrawable().getConstantState()==constantState2);//mira si es la misma imagen
 
 
                 if(fav.getDrawable().getConstantState()!=constantState2){
@@ -133,6 +133,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         //recuperar episodios
         recoverEpisodes();
+
+        //por alguna razon no puedes acceder a la actividad si tienes esto puesto :)
+        //finish();
     }
 
     private void recoverEpisodes() {
