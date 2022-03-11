@@ -11,95 +11,106 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/caratulaAnimeDetail"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/toolbarDetail"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
-    <RelativeLayout
-        android:id="@+id/relativeDetailInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbarDetail"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@id/caratulaAnimeDetail">
-
-        <TextView
-            android:id="@+id/nameAnimeDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:text="Titulo placeholder"
-            android:textColor="@color/rojo"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/descAnimeDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nameAnimeDetail"
-            android:layout_marginBottom="7dp"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:textColor="@color/letraOsc" />
-
-        <TextView
-            android:id="@+id/yearAnimeDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/descAnimeDetail"
-            android:layout_marginBottom="7dp"
-            android:text="2022"
-            android:textColor="@color/rojo" />
-
-        <TextView
-            android:id="@+id/platformAnimeDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/yearAnimeDetail"
-            android:layout_marginBottom="7dp"
-            android:text="TV"
-            android:textColor="@color/letraOsc"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/favIconAnimeDetail"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_below="@id/platformAnimeDetail"
-            app:srcCompat="@drawable/heart_icon" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/episodesPalabra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relativeDetailInfo"
-        android:layout_marginLeft="10dp"
-        android:text="@string/episodesPalabra"
-        android:textColor="@color/letraOsc"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerDetail"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/episodesPalabra"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp">
+        android:layout_below="@id/toolbarDetail">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/caratulaAnimeDetail"
+                android:layout_width="110dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <RelativeLayout
+                android:id="@+id/relativeDetailInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@id/caratulaAnimeDetail">
+
+                <TextView
+                    android:id="@+id/nameAnimeDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="Titulo placeholder"
+                    android:textColor="@color/rojo"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descAnimeDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameAnimeDetail"
+                    android:layout_marginBottom="7dp"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:textColor="@color/letraOsc" />
+
+                <TextView
+                    android:id="@+id/yearAnimeDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/descAnimeDetail"
+                    android:layout_marginBottom="7dp"
+                    android:text="2022"
+                    android:textColor="@color/rojo" />
+
+                <TextView
+                    android:id="@+id/platformAnimeDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/yearAnimeDetail"
+                    android:layout_marginBottom="7dp"
+                    android:text="TV"
+                    android:textColor="@color/letraOsc"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/favIconAnimeDetail2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/platformAnimeDetail"
+                    app:srcCompat="@drawable/full_heart_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/episodesPalabra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeDetailInfo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/episodesPalabra"
+                android:textColor="@color/letraOsc"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/episodesPalabra"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

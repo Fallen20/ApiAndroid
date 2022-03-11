@@ -67,7 +67,7 @@ public class DetailsActivity extends AppCompatActivity {
         desc=findViewById(R.id.descAnimeDetail);
         year=findViewById(R.id.yearAnimeDetail);
         platform=findViewById(R.id.platformAnimeDetail);
-        fav=findViewById(R.id.favIconAnimeDetail);
+        fav=findViewById(R.id.favIconAnimeDetail2);
 
 
         toolbar=findViewById(R.id.toolbarDetail);
@@ -82,40 +82,53 @@ public class DetailsActivity extends AppCompatActivity {
         nombreAnime=intent.getStringExtra("nombreADetails");
         emailUser=intent.getStringExtra("emailADetails");
 
+
         name.setText(intent.getStringExtra("nombreADetails"));
         desc.setText(intent.getStringExtra("descADetails"));
         year.setText(intent.getStringExtra("yearADetails"));
         platform.setText(intent.getStringExtra("platfADetails"));
         Picasso.get().load(intent.getStringExtra("UrlADetails")).fit().centerCrop().into(imagen);
-
-        if(intent.getStringExtra("inFavADetails")==null){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//si no tiene favs
-        else{//si esta lleno
-            if(intent.getStringExtra("inFavADetails").equals(idUser) && !idUser.equals(null)){fav.setImageResource(R.drawable.full_heart_icon_rojo);}
-            else if(intent.getStringExtra("inFavADetails").equals("null")){fav.setImageResource(R.drawable.heart_icon);}
-            else{fav.setImageResource(R.drawable.heart_icon);}
-        }
+        String favs=intent.getStringExtra("inFavADetails");
 
 
-        Drawable.ConstantState constantState;
+        if(favs==null){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//viene de favs
+        else if(favs.equals(idUser) && !idUser.equals("null")){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//es el user quien tiene fav
+        else{fav.setImageResource(R.drawable.heart_icon);}//no tiene nadie añadido o no eres tu
+
+
+        Drawable.ConstantState constantState2;
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            constantState=getApplicationContext().getResources().getDrawable(R.drawable.full_heart_icon_rojo, getApplicationContext().getTheme()).getConstantState();
+            constantState2=getApplicationContext().getResources().getDrawable(R.drawable.heart_icon, getApplicationContext().getTheme()).getConstantState();
         }
-        else{constantState=getApplicationContext().getResources().getDrawable(R.drawable.full_heart_icon_rojo).getConstantState();}
+        else{constantState2=getApplicationContext().getResources().getDrawable(R.drawable.heart_icon).getConstantState();}
+
+//        System.out.println("lleno? pre");
+//        System.out.println("img"+fav.getDrawable().getConstantState());
+//        System.out.println("constant"+constantState2);
+//        System.out.println(fav.getDrawable().getConstantState()==constantState2);
+
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(fav.getDrawable().getConstantState()==constantState){
-                    deleteFavs();
-                    fav.setImageResource(R.drawable.heart_icon);
+//
+//                System.out.println("lleno? click");
+//                System.out.println("img"+fav.getDrawable().getConstantState());
+//                System.out.println("constant"+constantState2);
+//                System.out.println(fav.getDrawable().getConstantState()==constantState2);//mira si es la misma imagen
 
-                }
+
+                if(fav.getDrawable().getConstantState()!=constantState2){
+                    System.out.println("del");
+                    deleteFavs();
+                                    }
                 else{
+                    System.out.println("addd");
                     addFavs();
-                    fav.setImageResource(R.drawable.full_heart_icon_rojo);
                 }
             }
         });
+
 
 
         //recuperar episodios
@@ -184,6 +197,7 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                        fav.setImageResource(R.drawable.heart_icon);
                     }
                 },
                 new Response.ErrorListener() {
@@ -217,6 +231,7 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                        fav.setImageResource(R.drawable.full_heart_icon_rojo);
                     }
                 },
                 new Response.ErrorListener() {
