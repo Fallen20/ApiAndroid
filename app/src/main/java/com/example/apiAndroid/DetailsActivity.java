@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.LabeledIntent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -77,11 +79,14 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
 
+
+        System.out.println(intent);
+
+
         idAnime=intent.getStringExtra("idAnimeADetails");
         idUser=intent.getStringExtra("idUserADetails");
         nombreAnime=intent.getStringExtra("nombreADetails");
         emailUser=intent.getStringExtra("emailADetails");
-
 
         name.setText(intent.getStringExtra("nombreADetails"));
         desc.setText(intent.getStringExtra("descADetails"));
@@ -91,41 +96,39 @@ public class DetailsActivity extends AppCompatActivity {
         String favs=intent.getStringExtra("inFavADetails");
 
 
-        if(favs==null){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//viene de favs
-        else if(favs.equals(idUser) && !idUser.equals("null")){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//es el user quien tiene fav
-        else{fav.setImageResource(R.drawable.heart_icon);}//no tiene nadie añadido o no eres tu
 
 
-        Drawable.ConstantState constantState2;
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.heart_icon, getApplicationContext().getTheme()).getConstantState();
+
+        if(intent.getStringExtra("actividad").equals("favoritos")){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//viene de favs
+        else if(favs==null){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//favs, porque no tiene
+        else if(intent.getStringExtra("actividad").equals("list")){//viene de lista
+            if(favs.equals(idUser) && !idUser.equals("null")){fav.setImageResource(R.drawable.full_heart_icon_rojo);}//es el user quien tiene fav
+            else if(favs.equals("null")){fav.setImageResource(R.drawable.heart_icon);}//la palabra literal null
+            else{fav.setImageResource(R.drawable.heart_icon);}//no tiene nadie añadido o no eres tu
         }
-        else{constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.heart_icon).getConstantState();}
 
-        System.out.println("lleno? pre");
-        System.out.println("img"+fav.getDrawable().getConstantState());
-        System.out.println("constant"+constantState2);
-        System.out.println(fav.getDrawable().getConstantState()==constantState2);
+
+
+        Drawable.ConstantState constantState2;//pillas el estado
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.full_heart_icon_rojo, getApplicationContext().getTheme()).getConstantState();
+        }
+        else{constantState2=DetailsActivity.this.getResources().getDrawable(R.drawable.full_heart_icon_rojo).getConstantState();}
+
+
 
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//
-                System.out.println("lleno? click");
-                System.out.println("img"+fav.getDrawable().getConstantState());
-                System.out.println("constant"+constantState2);
-                System.out.println(fav.getDrawable().getConstantState()==constantState2);//mira si es la misma imagen
-
-
-                if(fav.getDrawable().getConstantState()!=constantState2){
-                    System.out.println("del");
+                if(fav.getDrawable().getConstantState()==constantState2){
                     deleteFavs();
-                                    }
+                }
                 else{
-                    System.out.println("addd");
                     addFavs();
                 }
+
+
             }
         });
 

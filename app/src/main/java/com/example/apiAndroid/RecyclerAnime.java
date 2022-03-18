@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RecyclerAnime extends RecyclerView.Adapter<RecyclerAnime.MyViewHolder> {
@@ -131,7 +132,11 @@ public class RecyclerAnime extends RecyclerView.Adapter<RecyclerAnime.MyViewHold
                                 JSONObject obj=arrayAnimes.getJSONObject(contador);
 
                                 if(obj.getString("name").equals(name)){
+
                                     Intent intent=new Intent(context, DetailsActivity.class);
+
+                                    if(context instanceof FavsActivity){intent.putExtra("actividad","favoritos");}
+                                    else if(context instanceof ListActivity){intent.putExtra("actividad","list");}
 
                                     intent.putExtra("idUserADetails",usuario.getId());
                                     intent.putExtra("emailADetails",usuario.getEmail());
